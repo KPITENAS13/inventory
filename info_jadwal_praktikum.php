@@ -33,11 +33,13 @@ session_start();
                 <div class="row">
                     <div class="span3">
                         <?php
-                        if (empty($_SESSION['username'])) {
+                        if (empty($_SESSION['keterangan'])) {
                             include './components/sidebar1.php';
-                        } else if ($_SESSION['username'] == "Admin") {
+                        } else if ($_SESSION['keterangan'] == "Admin") {
+                            include './components/sidebar4.php';
+                        } else if ($_SESSION['keterangan'] == "Dosen") {
                             include './components/sidebar2.php';
-                        } else {
+                        } else if ($_SESSION['keterangan'] == "Mahasiswa"){
                             include './components/sidebar3.php';
                         }
                         ?>

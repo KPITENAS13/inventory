@@ -28,11 +28,11 @@
 					<ul class="nav pull-right">
 
 						<li><a href="#">
-							Sign Up
+							Daftar
 						</a></li>
 
 						<li><a href="#">
-							Forgot your password?
+							Lupa password?
 						</a></li>
 					</ul>
 				</div><!-- /.nav-collapse -->
@@ -53,12 +53,12 @@
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="text" name="username" placeholder="Username">
+									<input class="span12" type="text" name="id" placeholder="ID">
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="password" name="password" placeholder="Password">
+									<input class="span12" type="password" name="password" placeholder="Kata Sandi">
 								</div>
 							</div>
 						</div>

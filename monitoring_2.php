@@ -14,28 +14,13 @@
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.php">Lab IF </a>
-                    <div class="nav-collapse collapse navbar-inverse-collapse">
-                        <ul class="nav nav-icons">
-                            <li class="active"><a href="#"><i class="icon-home"></i></a></li>
-                            <li><a href="#"><i class="icon-user"></i></a></li>
-                            <li><a href="#"><i class="icon-bar-chart"></i></a></li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account
-                                    <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="beranda.php">Login</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Register</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.nav-collapse -->
-                </div>
+                <?php
+                if (empty($_SESSION['username'])) {
+                    include './components/navbar1.php';
+                } else {
+                    include './components/navbar2.php';
+                }
+                ?>
             </div>
             <!-- /navbar-inner -->
         </div>
@@ -44,34 +29,17 @@
             <div class="container">
                 <div class="row">
                     <div class="span3">
-                        <div class="sidebar">
-                            <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="info_jadwal_lab.php"><i class="menu-icon icon-table"></i> Jadwal Penggunaan Lab </a></li>
-                                <li><a href="info_jadwal_praktikum.php"><i class="menu-icon icon-list"></i> Jadwal Praktikum </a></li>
-                                <li><a href="info_topik_TA.php"><i class="menu-icon icon-list-alt"></i> Topik TA </a></li>
-                            </ul>
-                            <!--/.widget-nav-->
-                            <ul class="widget widget-menu unstyled">
-                                <li><a href="info_daftar_nilai.php"><i class="menu-icon icon-bar-chart"></i> Daftar Nilai Lab </a></li>
-                                <li><a href=""><i class="menu-icon icon-book"></i> Absensi </a></li>
-                            </ul>
-                            <!--/.widget-nav-->
-                            <ul class="widget widget-menu unstyled">
-                                <li><a href="monitoring.php"><i class="menu-icon icon-laptop"></i> Monitoring </a></li>
-                            </ul>
-                            <!--/.widget-nav-->
-                            <ul class="widget widget-menu unstyled">
-                                <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
-                                        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                                        </i> Account </a>
-                                    <ul id="togglePages" class="collapse unstyled">
-                                        <li><a href="other-login.html"><i class="icon-signin"></i> Login </a></li>
-                                        <li><a href="other-user-profile.html"><i class="icon-save"></i> Register </a></li>
-                                        <li><a href="other-user-listing.html"><i class="icon-phone"></i> Contact Us </a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <?php
+                        if (empty($_SESSION['keterangan'])) {
+                            include './components/sidebar1.php';
+                        } else if ($_SESSION['keterangan'] == "Admin") {
+                            include './components/sidebar4.php';
+                        } else if ($_SESSION['keterangan'] == "Dosen") {
+                            include './components/sidebar2.php';
+                        } else if ($_SESSION['keterangan'] == "Mahasiswa"){
+                            include './components/sidebar3.php';
+                        }
+                        ?>
                         <!--/.sidebar-->
                     </div>
                     <!--/.span3-->
