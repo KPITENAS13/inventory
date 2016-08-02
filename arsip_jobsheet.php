@@ -68,6 +68,7 @@ session_start();
                                         </thead>
                                         <tbody>
                                             <?php
+                                            include './components/tabel_arsip_jobsheet.php';
                                             ?>
                                         </tbody>
                                         <tfoot>

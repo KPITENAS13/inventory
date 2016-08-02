@@ -134,7 +134,7 @@ session_start();
                 <h4 class="modal-title" id="myModalLabel">Informasi Praktikum</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="admin/upload.php" enctype="multipart/form-data">
+                <form method="post" action="admin/upload_arsip.php" enctype="multipart/form-data">
                     <table style="width: 80%; margin-left: 10%">
                         <tr align="center">
                             <td>

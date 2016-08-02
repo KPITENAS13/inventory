@@ -68,7 +68,7 @@ session_start();
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include './components/tabel_modul.php';
+                                            include './components/tabel_arsip_modul.php';
                                             ?>
                                         </tbody>
                                         <tfoot>

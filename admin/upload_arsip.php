@@ -23,8 +23,7 @@ if ($uploadOk == 0) {
         mysql_query("INSERT INTO file 
         (nama_file,tanggal_upload,kategori,path)VALUES 
         ('$nama_file','$tanggal','$kategori','$target_file')");
-        //header('location:../admin_info_topik_ta.php');
-        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+        header('location:../admin_arsip.php');
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

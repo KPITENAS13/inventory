@@ -7,7 +7,7 @@ while ($r = mysql_fetch_array($q)) {
             <td>$r[nama_file]</td>
             <td>$r[tanggal_upload]</td>
             <td>$r[kategori]</td>
-            <td><a href='admin/delete_arsip.php?id=$r[id]&&path=$r[path]'> Hapus </a> </td>
+            <td><a href='admin/delete_arsip.php?id=$r[id]&&path=$r[path]'> <i class='menu-icon icon-remove'></i> Hapus </a> </td>
         </tr>";
 }
 ?>
