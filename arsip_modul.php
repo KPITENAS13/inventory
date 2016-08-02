@@ -68,6 +68,7 @@ session_start();
                                         </thead>
                                         <tbody>
                                             <?php
+                                            include './components/tabel_modul.php';
                                             ?>
                                         </tbody>
                                         <tfoot>

@@ -51,7 +51,7 @@ session_start();
                                     <h3>Arsip Dokumen Laboratorium</h3>
                                 </div>
                                 <div class="module-body table">
-                                    
+
                                     <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
                                            width="100%">
                                         <thead>
@@ -66,12 +66,13 @@ session_start();
                                                     Kategori
                                                 </th>
                                                 <th>
-                                                    Download
+                                                    Aksi
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
+                                            include './components/admin_tabel_arsip.php';
                                             ?>
                                         </tbody>
                                         <tfoot>
@@ -86,7 +87,7 @@ session_start();
                                                     Kategori
                                                 </th>
                                                 <th>
-                                                    Download
+                                                    Aksi
                                                 </th>
                                             </tr>
                                         </tfoot>
@@ -136,22 +137,41 @@ session_start();
                 <form method="post" action="admin/upload.php" enctype="multipart/form-data">
                     <table style="width: 80%; margin-left: 10%">
                         <tr align="center">
-                            <td><input class="form-inline" name="file" type="file" placeholder="File" style="width: 80%;"></td>
+                            <td>
+                                <select tabindex="1" data-placeholder="Pilih Kategori File" class="span3" name="kategori">
+                                    <option value="">--Pilih Kategori File--</option>
+                                    <option value="AbsensiAsisten">Absensi Asisten</option>
+                                    <option value="Jobsheet">Jobsheet</option>
+                                    <option value="Modul">Modul</option>
+                                    <option value="Sertifikat">Sertifikat</option>
+                                    <option value="SuratKeluar">Surat Keluar</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr align="center">
-                            <td><input name="semester" type="text" placeholder="Semester" style="width: 80%;"></td>
+                            <td>
+                                <select tabindex="1" data-placeholder="Pilih Nama Praktikum" class="span3" name="praktikum">
+                                    <option value="">--Pilih Nama Praktikum--</option>
+                                    <option value="PEMDAS">Pemrograman Dasar</option>
+                                    <option value="ORKOM">Organisasi & Arsitektur Komputer</option>
+                                    <option value="JARKOM">Jaringan Komputer</option>
+                                    <option value="PRC">Pemrograman Robot Cerdas</option>
+                                    <option value="REKWEB">Rekayasa Web</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr align="center">
-                            <td><input name="nama_prak" type="text" placeholder="Nama Praktikum" style="width: 80%;"></td>
+                            <td>
+                                <select tabindex="1" data-placeholder="Pilih Periode" class="span3" name="periode">
+                                    <option value="">--Pilih Periode--</option>
+                                    <option value="1516">2015/2016</option>
+                                    <option value="1617">2016/2017</option>
+                                    <option value="1718">2017/2018</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr align="center">
-                            <td><input name="kelas" type="text" placeholder="Kelas" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="waktu" type="text" placeholder="Waktu" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="asisten" type="text" placeholder="Koordinator" style="width: 80%;"></td>
+                            <td><input type="file" name="fileToUpload" id="fileToUpload"></td>
                         </tr>
                     </table>
             </div>
