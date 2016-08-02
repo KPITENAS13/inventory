@@ -11,8 +11,8 @@
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
         
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
         <script src="bootstrap/js/jquery-1.8.3.min.js"></script>
-        <script src="bootstrap/js/jquery.custom.js"></script>
         <script src="bootstrap/js/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -23,8 +23,8 @@ $(document).ready(function(){
 });
 </script>        
 
-<script language="javascript">
-function ConfirmPassword(){
+<script type="text/javascript">
+function ConfirmPassword(){    
 var pass = document.formreg.sandi.value;
 var Cpass = document.formreg.konfirmasi.value;
 var cek = document.getElementById('statusPassword');
@@ -46,7 +46,7 @@ var cek = document.getElementById('statusPassword');
 }
 </script>
 
-<script language="javascript">
+<script type="text/javascript">
 function validasi(formreg){
 	var nip=document.forms["formreg"]["id"].value;
 	var numbers=/^[0-9]+$/;
@@ -127,7 +127,7 @@ return(true);
                                                     &bull;&nbsp;Bebas (Dosen)."></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Konfirmasi*</td><td><input type="password" id="basicinput" class="span4" name="konfirmasi" maxlength="6" placeholder="Masukkan kembali kata sandi" required onKeyUp="ConfirmPassword()"></td>
+                                                    <td>Konfirmasi*</td><td><input type="password" id="basicinput" class="span4" name="konfirmasi" maxlength="6" placeholder="Masukkan kembali kata sandi" onKeyUp="ConfirmPassword()" required></td>
                                                     <td><span id="statusPassword" style="margin:0 0 8px 0"></span></td>
                                                 </tr>
                                                 <tr>
