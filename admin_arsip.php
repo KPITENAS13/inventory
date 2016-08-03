@@ -49,11 +49,10 @@ session_start();
                     <div class="span9">
                         <div class="content">
                             <div class="module">
-                                <div class="module-head">
+                                <div class="module-head" style="text-align: center">
                                     <h3>Arsip Dokumen Laboratorium</h3>
                                 </div>
                                 <div class="module-body table">
-
                                     <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
                                            width="100%">
                                         <thead>

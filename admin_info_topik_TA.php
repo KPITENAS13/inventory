@@ -62,7 +62,7 @@ session_start();
                                 <div class="module-body table">
                                     <div style="width: 100%; padding-bottom: 2%;" align="center">
                                         <button class="btn btn-success" data-toggle="modal" data-target="#DisarankanModal" style="width: 90%">
-                                            <i class='menu-icon icon-pencil'></i> Tambah Topik TA
+                                            <i class='menu-icon icon-pencil'></i> Tambah Topik TA yang Sedang Berlangsung
                                         </button>
                                     </div>
                                     <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
@@ -115,7 +115,7 @@ session_start();
                                 <div class="module-body table">
                                     <div style="width: 100%; padding-bottom: 2%;" align="center">
                                         <button class="btn btn-success" data-toggle="modal" data-target="#DisarankanModal" style="width: 90%">
-                                            <i class='menu-icon icon-pencil'></i> Tambah Topik TA
+                                            <i class='menu-icon icon-pencil'></i> Tambah Topik TA yang Disarankan
                                         </button>
                                     </div>
                                     <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
