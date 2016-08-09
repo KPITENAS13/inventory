@@ -61,7 +61,7 @@ session_start();
                                 </div>
                                 <div class="module-body table">
                                     <div style="width: 100%; padding-bottom: 2%;" align="center">
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#DisarankanModal" style="width: 90%">
+                                        <button class="btn btn-success" data-toggle="modal" data-target="#BerlangsungModal" style="width: 90%">
                                             <i class='menu-icon icon-pencil'></i> Tambah Topik TA yang Sedang Berlangsung
                                         </button>
                                     </div>
@@ -173,7 +173,7 @@ session_start();
         <script src="scripts/common.js" type="text/javascript"></script>
 
     </body>
-</html>
+
 
 <!-- Modal -->
 <div class="modal fade" id="BerlangsungModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

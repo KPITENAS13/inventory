@@ -48,45 +48,68 @@ session_start();
                     <!--/.span3-->
                     <div class="span9">
                         <div class="content">
-                            <div class="btn-controls">
-                                <div class="btn-box-row row-fluid">
-                                    <a href="praktikum_Lab.php?prak=pemdas" class="btn-box big span4"><i class=" icon-random"></i><b>PEMDAS</b>
-                                        <p class="text-muted">Pemrograman Dasar</p>
-                                    </a>
-                                    <a href="praktikum_Lab.php?prak=orkom" class="btn-box big span4"><i class="icon-user"></i><b>ORKOM</b>
-                                        <p class="text-muted">Organisasi & Arsitektur Komputer</p>
-                                    </a>
-                                    <a href="#" class="btn-box big span4"><i class="icon-money"></i><b>PRC</b>
-                                        <p class="text-muted">Pemrograman Robot Cerdas</p>
-                                    </a>
+                            <div class="module">
+                                <div class="module-head" align="center">
+                                    <h3>
+                                        <?php
+                                        $lab = $_GET['prak'];
+                                        if($lab == "pemdas"){
+                                            echo 'Pemrograman Dasar';
+                                        }else if($lab == "orkom"){
+                                            echo 'Organisasi & Arsitektur Komputer';
+                                        }
+                                        ?>
+                                    </h3>
+                                </div>
+                                <div class="module-body table">
+                                    
                                 </div>
                             </div>
-                            <!--/#btn-controls-->
-                            <div class="btn-controls">
-                                <div class="btn-box-row row-fluid">
-                                    <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b>JARKOM</b>
-                                        <p class="text-muted">Jaringan Komputer</p>
-                                    </a>
-                                    <a href="#" class="btn-box big span4"><i class="icon-user"></i><b>REKWEB</b>
-                                        <p class="text-muted">Rekayasa Web</p>
-                                    </a>
-                                    <a href="#" class="btn-box big span4"><i class="icon-money"></i><b>JST</b>
-                                        <p class="text-muted">Jaringan Syaraf Tiruan</p>
-                                    </a>
+                            <!--/.module-->
+                            <div class="module">
+                                <div class="module-head" align="center">
+                                    <h3>
+                                        Daftar Peserta
+                                    </h3>
+                                </div>
+                                <div class="module-body table">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
+                                           width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Judul
+                                                </th>
+                                                <th>
+                                                    Tanggal Upload
+                                                </th>
+                                                <th>
+                                                    Download
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            include './components/tabel_arsip_absensi.php';
+                                            ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>
+                                                    Judul
+                                                </th>
+                                                <th>
+                                                    Tanggal Upload
+                                                </th>
+                                                <th>
+                                                    Download
+                                                </th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                             </div>
-                            <!--/#btn-controls-->
-                            <div class="btn-controls">
-                                <div class="btn-box-row row-fluid">
-                                    <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b>BASDAT</b>
-                                        <p class="text-muted">Basis Data</p>
-                                    </a>
-                                    <a href="#" class="btn-box big span4"><i class="icon-user"></i><b>PBO</b>
-                                        <p class="text-muted">Pemrograman Berorientasi Objek</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--/#btn-controls-->
+                            <!--/.module-->
                         </div>
                         <!--/.content-->
                     </div>

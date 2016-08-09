@@ -13,6 +13,26 @@ session_start();
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
               rel='stylesheet'>
+        <script>
+            function validateForm() {
+                var x = document.forms["myForm"]["periode"].value;
+                if (x==null || x=="") {
+                    alert('Silakan Pilih Periode Terlebih Dahulu');
+                    return false;
+                }
+                var y = document.forms["myForm"]["praktikum"].value;
+                if (y==null || y=="") {
+                    alert('Silakan Pilih Nama Praktikum Terlebih Dahulu');
+                    return false;
+                }
+                var z = document.forms["myForm"]["kelas"].value;
+                if (z==null || z=="") {
+                    alert('Silakan Pilih Kelas Terlebih Dahulu');
+                    return false;
+                }
+                
+            }
+        </script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -39,7 +59,7 @@ session_start();
                             include './components/sidebar4.php';
                         } else if ($_SESSION['keterangan'] == "Dosen") {
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['keterangan'] == "Mahasiswa"){
+                        } else if ($_SESSION['keterangan'] == "Mahasiswa") {
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -57,18 +77,19 @@ session_start();
                                         <div class="module">
                                             <div class="module-head" align="center">
                                                 <h3>
-                                                    Informasi Praktikum</h3>
+                                                    Informasi Praktikum
+                                                </h3>
                                             </div>
                                             <div class="module-body table">
-                                                <form class="form-horizontal row-fluid">
+                                                <form onsubmit="return validateForm()" name="myForm" class="form-horizontal row-fluid" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                                     <div class="control-group">
                                                         <label class="control-label" for="basicinput">Periode</label>
                                                         <div class="controls">
-                                                            <select tabindex="1" data-placeholder="Select here.." class="span8">
+                                                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="periode" id="per">
                                                                 <option value="">Select here..</option>
-                                                                <option value="Category 1">2015/2016</option>
-                                                                <option value="Category 2">2016/2017</option>
-                                                                <option value="Category 3">2017/2018</option>
+                                                                <option value="1516">2015/2016</option>
+                                                                <option value="1617">2016/2017</option>
+                                                                <option value="1718">2017/2018</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -76,13 +97,13 @@ session_start();
                                                     <div class="control-group">
                                                         <label class="control-label" for="basicinput">Praktikum</label>
                                                         <div class="controls">
-                                                            <select tabindex="1" data-placeholder="Select here.." class="span8">
+                                                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="praktikum" id="pra">
                                                                 <option value="">Select here..</option>
-                                                                <option value="Category 1">Pemrograman Dasar</option>
-                                                                <option value="Category 2">Organisasi & Arsitektur Komputer</option>
-                                                                <option value="Category 3">Jaringan Komputer</option>
-                                                                <option value="Category 4">Pemrograman Robot Cerdas</option>
-                                                                <option value="Category 5">Rekayasa Web</option>
+                                                                <option value="PEMDAS">Pemrograman Dasar</option>
+                                                                <option value="ORKOM">Organisasi & Arsitektur Komputer</option>
+                                                                <option value="JARKOM">Jaringan Komputer</option>
+                                                                <option value="PRC">Pemrograman Robot Cerdas</option>
+                                                                <option value="REKWEB">Rekayasa Web</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -90,18 +111,18 @@ session_start();
                                                     <div class="control-group">
                                                         <label class="control-label" for="basicinput">Kelas</label>
                                                         <div class="controls">
-                                                            <select tabindex="1" data-placeholder="Select here.." class="span8">
+                                                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="kelas" id="kls">
                                                                 <option value="">Select here..</option>
-                                                                <option value="Category 1">A</option>
-                                                                <option value="Category 2">B</option>
-                                                                <option value="Category 3">C</option>
+                                                                <option value="A">A</option>
+                                                                <option value="B">B</option>
+                                                                <option value="C">C</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="control-group">
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -125,6 +146,7 @@ session_start();
                                         </thead>
                                         <tbody>
                                             <?php
+                                            include './components/tabel_absensi.php';
                                             ?>
                                         </tbody>
                                         <tfoot>

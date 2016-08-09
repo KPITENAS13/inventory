@@ -30,6 +30,6 @@
         <li><a href="monitoring.php"><i class="menu-icon icon-laptop"></i> Monitoring </a></li>
     </ul>
     <ul class="widget widget-menu unstyled">
-        <li><a href="#"><i class="menu-icon icon-lightbulb"></i> Praktikum </a></li>
+        <li><a href="praktikum.php"><i class="menu-icon icon-lightbulb"></i> Praktikum </a></li>
     </ul>
 </div>
