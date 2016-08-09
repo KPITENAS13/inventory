@@ -10,11 +10,11 @@
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
         
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap.js"></script>
         <script src="bootstrap/js/jquery-1.8.3.min.js"></script>
         <script src="bootstrap/js/jquery.min.js"></script>
-
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        
 <script type="text/javascript">
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({
@@ -99,7 +99,7 @@ return(true);
 		<div class="container">
 			<div class="row">
 				<div class="module module-login span6 offset3">
-                                    <form class="form-horizontal" method="post" action="components/daftar_proses.php">
+                                    <form class="form-horizontal" name="formreg" method="post" action="components/daftar_proses.php">
 						<div class="module-head">
                                                     <h3 style="text-align: center">PENDAFTARAN</h3>
 						</div>
@@ -109,7 +109,7 @@ return(true);
                                                 <tr>
                                                     <td width="30%">ID*</td>
                                                     <td><input type="text" id="basicinput" class="span4" name="id" maxlength="9"  placeholder="Masukkan NID / NRP" required autofocus></td>
-                                                    <td><span class="icon-exclamation-sign" style="margin:0 0 5px 0" data-toggle="popover" tabindex="1" data-trigger="focus" title="Informasi" data-content=" 
+                                                    <td width="5%"><span class="icon-exclamation-sign" style="margin:0 0 5px 0" data-toggle="popover" tabindex="1" data-trigger="focus" title="Informasi" data-content=" 
                                                     &bull;&nbsp;Panjang maksimal 9 digit.
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     &bull;&nbsp;NID (Dosen) : 4 digit.
