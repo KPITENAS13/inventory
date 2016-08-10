@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+<?php 
+    session_start();
+    if (isset($_SESSION['username'])){
+        header('location:index.php');
+    }
+?>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,6 +14,22 @@
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+
+<script type="text/javascript">
+function validasi(formlogin){
+	var user=document.formlogin.username.value;
+	var pass=document.formlogin.password.value;
+	
+	if ((user === "") || (pass === "")){
+		$(document).ready(function(){
+                        $("#pesan").html("<b>Warning!</b> ID atau Kata sandi masih kosong!");
+                        $("#pesan").show();
+                });
+		return(false);
+	}
+return(true);
+}
+</script>
 </head>
 <body>
 
@@ -44,9 +65,12 @@
 
 	<div class="wrapper">
 		<div class="container">
+                    <div hidden="true" id="pesan" class="alert alert-warning alert-dismissible" role="alert" style="padding-left: 60px;text-align: center;width: 77.5%;position: fixed">
+                        
+                    </div>
 			<div class="row">
 				<div class="module module-login span4 offset4">
-                                    <form name="formlogin" class="form-vertical" method="post" onsubmit="return validasi()" action="components/login_proses.php">
+                                    <form name="formlogin" class="form-vertical" method="post" action="components/login_proses.php" onsubmit="return validasi(this)">
 						<div class="module-head">
                                                     <h3 style="text-align: center">LOGIN</h3>
 						</div>

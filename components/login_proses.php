@@ -11,15 +11,15 @@ if ($username == "admin" and $password == "admin") {
     session_start();
     $_SESSION['username'] = "Admin";
     header("location:../index.php");
-} else if(($username == "") || ($password == "")){
-    echo "<script>alert('ID atau Kata sandi masih kosong !');window.history.back(-1);</script>";
 } else {
     if ($row['id'] == $username AND $row['pin'] == $password) {
         session_start();
         $_SESSION['username'] = $row['nama'];
         header("location:../index.php");
     }  else {
-        echo "<script>alert('Maaf ID atau Kata sandi salah !');window.history.back(-1);</script>";
+        echo "<script>window.history.back(-1);"
+            . "alert('Maaf ID atau Kata sandi salah !');"
+            . "</script>";
     }
 }
 ?>
