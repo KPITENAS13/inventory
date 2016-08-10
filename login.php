@@ -19,7 +19,7 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="index.php">
 			  		Lab IF
 			  	</a>
 
@@ -27,12 +27,12 @@
 				
 					<ul class="nav pull-right">
 
-						<li><a href="#">
-							Sign Up
+                                                <li><a href="register.php">
+							Daftar
 						</a></li>
 
 						<li><a href="#">
-							Forgot your password?
+							Lupa kata sandi ?
 						</a></li>
 					</ul>
 				</div><!-- /.nav-collapse -->
@@ -46,28 +46,28 @@
 		<div class="container">
 			<div class="row">
 				<div class="module module-login span4 offset4">
-                                    <form class="form-vertical" method="post" action="components/login_proses.php">
+                                    <form name="formlogin" class="form-vertical" method="post" onsubmit="return validasi()" action="components/login_proses.php">
 						<div class="module-head">
-							<h3>Sign In</h3>
+                                                    <h3 style="text-align: center">LOGIN</h3>
 						</div>
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="text" name="username" placeholder="Username">
+                                                                    <input class="span12" type="text" name="username" maxlength="9" placeholder="ID">
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="password" name="password" placeholder="Password">
+                                                                    <input class="span12" type="password" name="password" maxlength="6" placeholder="Kata Sandi">
 								</div>
 							</div>
 						</div>
 						<div class="module-foot">
 							<div class="control-group">
 								<div class="controls clearfix">
-									<button type="submit" class="btn btn-primary pull-right">Login</button>
+									<button type="submit" class="btn btn-primary pull-right">Masuk</button>
 									<label class="checkbox">
-										<input type="checkbox"> Remember me
+										<input type="checkbox"> Ingat saya
 									</label>
 								</div>
 							</div>

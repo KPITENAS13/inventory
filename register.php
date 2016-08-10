@@ -29,18 +29,13 @@ var pass = document.formreg.sandi.value;
 var Cpass = document.formreg.konfirmasi.value;
 var cek = document.getElementById('statusPassword');
 
-	if (Cpass != pass){
+	if (Cpass !== pass){
 		cek.className = 'icon-remove';
 	} else{
 		cek.className = 'icon-ok';
 	}
-
-	if (pass.length < 6){
-		alert('Kata sandi tidak boleh kurang dari 6 digit');
-		document.formreg.sandi.focus();
-	}
 	
-	if (pass == "" || Cpass == ""){
+	if (pass === "" || Cpass === ""){
 		cek.className = '';
 	}
 }
@@ -72,7 +67,7 @@ return(true);
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="index.php">
 			  		Lab IF
 			  	</a>
 
@@ -81,11 +76,11 @@ return(true);
 					<ul class="nav pull-right">
 
 						<li><a href="#">
-							Sign Up
+							Daftar
 						</a></li>
 
 						<li><a href="#">
-							Forgot your password?
+							Lupa kata sandi?
 						</a></li>
 					</ul>
 				</div><!-- /.nav-collapse -->
