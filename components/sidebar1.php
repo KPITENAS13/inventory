@@ -19,9 +19,9 @@
                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                 </i> Account </a>
             <ul id="togglePages" class="collapse unstyled">
-                <li><a href="other-login.html"><i class="icon-signin"></i> Login </a></li>
-                <li><a href="other-user-profile.html"><i class="icon-save"></i> Register </a></li>
-                <li><a href="other-user-listing.html"><i class="icon-phone"></i> Contact Us </a></li>
+                <li><a href="login.php"><i class="icon-signin"></i> Login </a></li>
+                <li><a href="register.php"><i class="icon-save"></i> Register </a></li>
+                <li><a href="contactus.php"><i class="icon-phone"></i> Contact Us </a></li>
             </ul>
         </li>
     </ul>

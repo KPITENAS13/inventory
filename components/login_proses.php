@@ -26,8 +26,10 @@ if ($kode == 4) {
         $_SESSION['username'] = $row2['nama'];
         $_SESSION['keterangan'] = "Mahasiswa";
         header("location:../index.php");
-    } else {
-        header("location:../index.php");
+    }  else {
+        echo "<script>window.history.back(-1);"
+            . "alert('Maaf ID atau Kata sandi salah !');"
+            . "</script>";
     }
 } else {
     session_start();

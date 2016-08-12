@@ -10,6 +10,19 @@
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
               rel='stylesheet'>
+        <script>
+            var youtubeFunc = '';
+            var outerDiv = document.getElementById("introVideo");
+            var youtubeIframe = outerDiv.getElementsByTagName("iframe")[0].contentWindow;
+            $('#introVideo').on('hidden.bs.modal', function (e) {
+                youtubeFunc = 'pauseVideo';
+                youtubeIframe.postMessage('{"event":"command","func":"' + youtubeFunc + '","args":""}', '*');
+            });
+            $('#introVideo').on('shown.bs.modal', function (e) {
+                youtubeFunc = 'playVideo';
+                youtubeIframe.postMessage('{"event":"command","func":"' + youtubeFunc + '","args":""}', '*');
+            });
+        </script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -36,7 +49,7 @@
                             include './components/sidebar4.php';
                         } else if ($_SESSION['keterangan'] == "Dosen") {
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['keterangan'] == "Mahasiswa"){
+                        } else if ($_SESSION['keterangan'] == "Mahasiswa") {
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -46,24 +59,63 @@
                     <div class="span9">
                         <div class="content">
                             <div class="module-head" style="text-align: center">
-                                <h3>
-                                    Jadwal Penggunaan Lab Teknik Informatika</h3>
+                                <h3>Camera List</h3>
                             </div>
                             <div class="module">
                                 <div class="module-body table">
-                                    <table border="1" style="width: 100%">
-                                        <tr>
-                                            <td style="">
-                                                <a data-toggle="modal" data-target="#myModal">
-                                                    <video width="360px" height="240px" controls>
-                                                        <source src="video/video1.MP4" type="video/mp4">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </a>
-                                            </td>
-                                            <td>Laboratorium Dasar Komputer (2402)</td>
-                                        </tr>
-                                    </table>
+                                    <div style="margin-left: 2%; margin-right: 2%; width: 96%; height: 36vh;">
+                                        <div style="width: 40%; float: left; height: 32vh; margin-top: 2vh;">
+                                            <img src="img/lab_daskom.png" style="height: 100%; width: 100%;">
+                                        </div>
+                                        <div style="width: 59%; float: right; height: 22vh;margin-top: 2vh; margin-left: 1%;">
+                                            <h4>Laboratorium Dasar Komputer</h4>
+                                            <p>
+                                                - Praktikum Pemrograman Dasar <br>
+                                                - Praktikum Organisasi & Arsitektur Komputer
+                                            </p>
+                                        </div>
+                                        <div style="padding-top: 3vh; width: 59%; float: right; height: 5vh; margin-top: 2vh; margin-left: 1%;">
+                                            <button class="btn btn-success btn-large" data-toggle="modal" data-target="#myModal" style="width: 40%">
+                                                <i class='menu-icon icon-play'></i> Mulai Streaming
+                                            </button>
+                                        </div>
+                                    </div>  
+                                    <hr>
+                                    <div style="margin-left: 2%; margin-right: 2%; width: 96%; height: 36vh;">
+                                        <div style="width: 40%; float: left; height: 32vh; margin-top: 2vh;">
+                                            <img src="img/lab_multimedia.png" style="height: 100%; width: 100%;">
+                                        </div>
+                                        <div style="width: 59%; float: right; height: 22vh;margin-top: 2vh; margin-left: 1%;">
+                                            <h4>Laboratorium Multimedia</h4>
+                                            <p>
+                                                - Praktikum Jaringan Syaraf Tiruan <br>
+                                                - Praktikum Pemrograman Robot Cerdas
+                                            </p>
+                                        </div>
+                                        <div style="padding-top: 3vh; width: 59%; float: right; height: 5vh; margin-top: 2vh; margin-left: 1%;">
+                                            <button class="btn btn-success btn-large" data-toggle="modal" data-target="#introVideo" style="width: 40%">
+                                                <i class='menu-icon icon-play'></i> Mulai Streaming
+                                            </button>
+                                        </div>
+                                    </div> 
+                                    <hr>
+                                    <div style="margin-left: 2%; margin-right: 2%; width: 96%; height: 36vh;">
+                                        <div style="width: 40%; float: left; height: 32vh; margin-top: 2vh;">
+                                            <img src="img/lab_jarkom.png" style="height: 100%; width: 100%;">
+                                        </div>
+                                        <div style="width: 59%; float: right; height: 22vh;margin-top: 2vh; margin-left: 1%;">
+                                            <h4>Laboratorium Jaringan Komputer</h4>
+                                            <p>
+                                                - Praktikum Jaringan Komputer <br>
+                                                - Praktikum Rekayasa Web
+                                            </p>
+                                        </div>
+                                        <div style="padding-top: 3vh; width: 59%; float: right; height: 5vh; margin-top: 2vh; margin-left: 1%;">
+                                            <button class="btn btn-success btn-large" data-toggle="modal" data-target="#introVideo" style="width: 40%">
+                                                <i class='menu-icon icon-play'></i> Mulai Streaming
+                                            </button>
+                                        </div>
+                                    </div>  
                                 </div>
                             </div>
                             <!--/.module-->
@@ -93,7 +145,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="width:100%;">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -107,6 +159,20 @@
                 </div>
                 <div class="modal-footer">
                     <p>Laboratorium Pemrograman Dasar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-lg" id="introVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/<videoid>?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>

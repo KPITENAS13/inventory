@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+<?php 
+    session_start();
+    if (isset($_SESSION['username'])){
+        header('location:index.php');
+    }
+?>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,6 +14,22 @@
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+
+<script type="text/javascript">
+function validasi(formlogin){
+	var user=document.formlogin.username.value;
+	var pass=document.formlogin.password.value;
+	
+	if ((user === "") || (pass === "")){
+		$(document).ready(function(){
+                        $("#pesan").html("<b>Warning!</b> ID atau Kata sandi masih kosong!");
+                        $("#pesan").show();
+                });
+		return(false);
+	}
+return(true);
+}
+</script>
 </head>
 <body>
 
@@ -19,7 +40,7 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="index.php">
 			  		Lab IF
 			  	</a>
 
@@ -27,12 +48,20 @@
 				
 					<ul class="nav pull-right">
 
+<<<<<<< HEAD
 						<li><a href="#">
+=======
+                                                <li><a href="register.php">
+>>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 							Daftar
 						</a></li>
 
 						<li><a href="#">
+<<<<<<< HEAD
 							Lupa password?
+=======
+							Lupa kata sandi ?
+>>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 						</a></li>
 					</ul>
 				</div><!-- /.nav-collapse -->
@@ -44,30 +73,41 @@
 
 	<div class="wrapper">
 		<div class="container">
+                    <div hidden="true" id="pesan" class="alert alert-warning alert-dismissible" role="alert" style="padding-left: 60px;text-align: center;width: 77.5%;position: fixed">
+                        
+                    </div>
 			<div class="row">
 				<div class="module module-login span4 offset4">
-                                    <form class="form-vertical" method="post" action="components/login_proses.php">
+                                    <form name="formlogin" class="form-vertical" method="post" action="components/login_proses.php" onsubmit="return validasi(this)">
 						<div class="module-head">
-							<h3>Sign In</h3>
+                                                    <h3 style="text-align: center">LOGIN</h3>
 						</div>
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
+<<<<<<< HEAD
 									<input class="span12" type="text" name="id" placeholder="ID">
+=======
+                                                                    <input class="span12" type="text" name="username" maxlength="9" placeholder="ID">
+>>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
+<<<<<<< HEAD
 									<input class="span12" type="password" name="password" placeholder="Kata Sandi">
+=======
+                                                                    <input class="span12" type="password" name="password" maxlength="6" placeholder="Kata Sandi">
+>>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 								</div>
 							</div>
 						</div>
 						<div class="module-foot">
 							<div class="control-group">
 								<div class="controls clearfix">
-									<button type="submit" class="btn btn-primary pull-right">Login</button>
+									<button type="submit" class="btn btn-primary pull-right">Masuk</button>
 									<label class="checkbox">
-										<input type="checkbox"> Remember me
+										<input type="checkbox"> Ingat saya
 									</label>
 								</div>
 							</div>
