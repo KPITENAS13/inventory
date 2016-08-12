@@ -1,25 +1,43 @@
 <?php
+
 include "../koneksi.php";
 $username = $_POST['username'];
 $password = $_POST['password'];
+$digit = strlen($username);
 
-$query = "select * from mahasiswa WHERE id = '$username' AND pin = '$password'";
-$hasil = mysql_query($query);
-$row = mysql_fetch_array($hasil);
-
-if ($username == "admin" and $password == "admin") {
-    session_start();
-    $_SESSION['username'] = "Admin";
-    header("location:../index.php");
-} else {
+if ($digit == 4) { //cek digit untuk dosen
+    $query = "select * from dosen WHERE nid = '$username' AND sandi = '$password'";
+    $hasil = mysql_query($query);
+    $row = mysql_fetch_array($hasil);
+    if ($row['nid'] == $username AND $row['sandi'] == $password) {
+        session_start();
+        $_SESSION['username'] = $row['nama'];
+        $_SESSION['kategori'] = "dosen";
+        header("location:../index.php");
+    } else {
+        echo "<script>window.history.back(-1);"
+        . "alert('Maaf ID atau Kata sandi salah !');"
+        . "</script>";
+    }
+} else if ($digit == 9) { //cek digit mahasiswa
+    $query = "select * from mahasiswa WHERE id = '$username' AND pin = '$password'";
+    $hasil = mysql_query($query);
+    $row = mysql_fetch_array($hasil);
     if ($row['id'] == $username AND $row['pin'] == $password) {
         session_start();
         $_SESSION['username'] = $row['nama'];
+        $_SESSION['kategori'] = "mahasiswa";
         header("location:../index.php");
-    }  else {
+    } else {
         echo "<script>window.history.back(-1);"
-            . "alert('Maaf ID atau Kata sandi salah !');"
-            . "</script>";
+        . "alert('Maaf ID atau Kata sandi salah !');"
+        . "</script>";
     }
+} else { //selain 4 dan 9 == admin
+    session_start();
+    $_SESSION['username'] = "Admin";
+    $_SESSION['kategori'] = "admin";
+    header("location:../index.php");
 }
+
 ?>

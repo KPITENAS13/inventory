@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,28 +17,13 @@
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.php">Lab IF </a>
-                    <div class="nav-collapse collapse navbar-inverse-collapse">
-                        <ul class="nav nav-icons">
-                            <li class="active"><a href="#"><i class="icon-home"></i></a></li>
-                            <li><a href="#"><i class="icon-user"></i></a></li>
-                            <li><a href="#"><i class="icon-bar-chart"></i></a></li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account
-                                    <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="beranda.php">Login</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Register</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.nav-collapse -->
-                </div>
+                <?php
+                if (empty($_SESSION['username'])) {
+                    include './components/navbar1.php';
+                } else {
+                    include './components/navbar2.php';
+                }
+                ?>
             </div>
             <!-- /navbar-inner -->
         </div>
@@ -45,7 +33,15 @@
                 <div class="row">
                     <div class="span3">
                         <?php
-                        include './components/sidebar1.php';
+                        if (empty($_SESSION['kategori'])) { //kategori kosong = guest
+                            include './components/sidebar1.php';
+                        } else if ($_SESSION['kategori'] == "admin") { //jika admin yang masuk
+                            include './components/sidebar4.php';
+                        } else if ($_SESSION['kategori'] == "dosen") { //jika dosen yang masuk
+                            include './components/sidebar2.php';
+                        } else if ($_SESSION['kategori'] == "mahasiswa"){ //jika mahasiswa yang masuk
+                            include './components/sidebar3.php';
+                        }
                         ?>
                         <!--/.sidebar-->
                     </div>

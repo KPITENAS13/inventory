@@ -33,11 +33,13 @@ session_start();
                 <div class="row">
                     <div class="span3">
                         <?php
-                        if (empty($_SESSION['username'])) {
+                        if (empty($_SESSION['kategori'])) { //kategori kosong = guest
                             include './components/sidebar1.php';
-                        } else if ($_SESSION['username'] == "Admin") {
+                        } else if ($_SESSION['kategori'] == "admin") { //jika admin yang masuk
+                            include './components/sidebar4.php';
+                        } else if ($_SESSION['kategori'] == "dosen") { //jika dosen yang masuk
                             include './components/sidebar2.php';
-                        } else {
+                        } else if ($_SESSION['kategori'] == "mahasiswa"){ //jika mahasiswa yang masuk
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -52,193 +54,25 @@ session_start();
                                         Jadwal Penggunaan Lab Teknik Informatika</h3>
                                 </div>
                                 <div class="module-body table">
-                                    <table cellpadding="0" cellspacing="0" border="0" class=" table table-bordered table-striped	 display"
-                                           width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    Waktu
-                                                </th>
-                                                <th>
-                                                    Senin
-                                                </th>
-                                                <th>
-                                                    Selasa
-                                                </th>
-                                                <th>
-                                                    Rabu
-                                                </th>
-                                                <th>
-                                                    Kamis
-                                                </th>
-                                                <th>
-                                                    Jum'at
-                                                </th>
-                                                <th>
-                                                    Sabtu
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    07.00-07.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    08.00-08.50
-                                                </td>
-                                                <td style="background-color: #802420"></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0044cc"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    09.00-09.50
-                                                </td>
-                                                <td style="background-color: #802420"></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0044cc"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    10.00-10.50
-                                                </td>
-                                                <td style="background-color: #802420"></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0044cc"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    11.00-11.50
-                                                </td>
-                                                <td style="background-color: #802420"></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0044cc"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    12.00-12.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    13.00-13.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0480be"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    14.00-14.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0480be"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    15.00-15.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0480be"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    16.00-16.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="background-color: #0480be"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    17.00-17.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    18.00-18.50
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>
-                                                    Waktu
-                                                </th>
-                                                <th>
-                                                    Senin
-                                                </th>
-                                                <th>
-                                                    Selasa
-                                                </th>
-                                                <th>
-                                                    Rabu
-                                                </th>
-                                                <th>
-                                                    Kamis
-                                                </th>
-                                                <th>
-                                                    Jum'at
-                                                </th>
-                                                <th>
-                                                    Sabtu
-                                                </th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                    <div style="width: 98%; padding-left: 1%;">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a data-toggle="tab" href="#home">Ruang 2401</a></li>
+                                            <li><a data-toggle="tab" href="#menu1">Ruang 2402</a></li>
+                                            <li><a data-toggle="tab" href="#menu2">Ruang 2403</a></li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div id="home" class="tab-pane fade in active">
+                                                <?php include './components/tab_jadwal_lab1.php';?>
+                                            </div>
+                                            <div id="menu1" class="tab-pane fade">
+                                                <?php include './components/tab_jadwal_lab2.php';?>
+                                            </div>
+                                            <div id="menu2" class="tab-pane fade">
+                                                <?php include './components/tab_jadwal_lab3.php';?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--/.module-->

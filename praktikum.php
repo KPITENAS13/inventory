@@ -33,13 +33,13 @@ session_start();
                 <div class="row">
                     <div class="span3">
                         <?php
-                        if (empty($_SESSION['keterangan'])) {
+                        if (empty($_SESSION['kategori'])) { //kategori kosong = guest
                             include './components/sidebar1.php';
-                        } else if ($_SESSION['keterangan'] == "Admin") {
+                        } else if ($_SESSION['kategori'] == "admin") { //jika admin yang masuk
                             include './components/sidebar4.php';
-                        } else if ($_SESSION['keterangan'] == "Dosen") {
+                        } else if ($_SESSION['kategori'] == "dosen") { //jika dosen yang masuk
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['keterangan'] == "Mahasiswa") {
+                        } else if ($_SESSION['kategori'] == "mahasiswa"){ //jika mahasiswa yang masuk
                             include './components/sidebar3.php';
                         }
                         ?>

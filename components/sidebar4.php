@@ -1,3 +1,4 @@
+<!--Sidebar menu untuk admin-->
 <div class="sidebar">
     <!--/.widget-nav-->
     <ul class="widget widget-menu unstyled">
