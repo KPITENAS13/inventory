@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-if (isset($_POST['submit'])) {
-    $per = $_POST['periode'];
-    $pra = $_POST['praktikum'];
-    $kls = $_POST['kelas'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,37 +10,52 @@ if (isset($_POST['submit'])) {
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
               rel='stylesheet'>
-        <script>
-            function validateForm() {
-                var x = document.forms["myForm"]["periode"].value;
-                if (x==null || x=="") {
-                    alert('Silakan Pilih Periode Terlebih Dahulu');
-                    return false;
-                }
-                var y = document.forms["myForm"]["praktikum"].value;
-                if (y==null || y=="") {
-                    alert('Silakan Pilih Nama Praktikum Terlebih Dahulu');
-                    return false;
-                }
-                var z = document.forms["myForm"]["kelas"].value;
-                if (z==null || z=="") {
-                    alert('Silakan Pilih Kelas Terlebih Dahulu');
-                    return false;
-                }
-                
-            }
-        </script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
-                <?php
-                if (empty($_SESSION['username'])) {
-                    include './components/navbar1.php';
-                } else {
-                    include './components/navbar2.php';
-                }
-                ?>
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Lab IF </a>
+                    <div class="nav-collapse collapse navbar-inverse-collapse">
+                        <ul class="nav nav-icons">
+                            <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
+                            <li><a href="#"><i class="icon-eye-open"></i></a></li>
+                            <li><a href="#"><i class="icon-bar-chart"></i></a></li>
+                        </ul>
+                        <form class="navbar-search pull-left input-append" action="#">
+                            <input type="text" class="span3">
+                            <button class="btn" type="button">
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+                        <ul class="nav pull-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                    <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Item No. 1</a></li>
+                                    <li><a href="#">Don't Click</a></li>
+                                    <li class="divider"></li>
+                                    <li class="nav-header">Example Header</li>
+                                    <li><a href="#">A Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Support </a></li>
+                            <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="images/user.png" class="nav-avatar" />
+                                    <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Your Profile</a></li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li><a href="#">Account Settings</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.nav-collapse -->
+                </div>
             </div>
             <!-- /navbar-inner -->
         </div>
@@ -60,15 +65,7 @@ if (isset($_POST['submit'])) {
                 <div class="row">
                     <div class="span3">
                         <?php
-                        if (empty($_SESSION['keterangan'])) {
-                            include './components/sidebar1.php';
-                        } else if ($_SESSION['keterangan'] == "Admin") {
-                            include './components/sidebar4.php';
-                        } else if ($_SESSION['keterangan'] == "Dosen") {
-                            include './components/sidebar2.php';
-                        } else if ($_SESSION['keterangan'] == "Mahasiswa") {
-                            include './components/sidebar3.php';
-                        }
+                        include './components/sidebar1.php';
                         ?>
                         <!--/.sidebar-->
                     </div>
@@ -80,24 +77,27 @@ if (isset($_POST['submit'])) {
                                     <h3>Absensi Praktikum</h3>
                                 </div>
                                 <div class="module-body table">
-
+                                    <div style="width: 100%; padding-bottom: 2%;" align="center">
+                                        <button class="btn btn-success" data-toggle="modal" data-target="#BerlangsungModal" style="width: 90%">
+                                            <i class='menu-icon icon-pencil'></i> Upload File Absensi
+                                        </button>
+                                    </div>
                                     <div style="width: 60%; margin-left: 20%;">
                                         <div class="module">
                                             <div class="module-head" align="center">
                                                 <h3>
-                                                    Informasi Praktikum
-                                                </h3>
+                                                    Informasi Praktikum</h3>
                                             </div>
                                             <div class="module-body table">
-                                                <form onsubmit="return validateForm()" name="myForm" class="form-horizontal row-fluid" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                                <form class="form-horizontal row-fluid">
                                                     <div class="control-group">
                                                         <label class="control-label" for="basicinput">Periode</label>
                                                         <div class="controls">
-                                                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="periode" id="per">
+                                                            <select tabindex="1" data-placeholder="Select here.." class="span8">
                                                                 <option value="">Select here..</option>
-                                                                <option value="1516">2015/2016</option>
-                                                                <option value="1617">2016/2017</option>
-                                                                <option value="1718">2017/2018</option>
+                                                                <option value="Category 1">2015/2016</option>
+                                                                <option value="Category 2">2016/2017</option>
+                                                                <option value="Category 3">2017/2018</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -105,13 +105,13 @@ if (isset($_POST['submit'])) {
                                                     <div class="control-group">
                                                         <label class="control-label" for="basicinput">Praktikum</label>
                                                         <div class="controls">
-                                                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="praktikum" id="pra">
+                                                            <select tabindex="1" data-placeholder="Select here.." class="span8">
                                                                 <option value="">Select here..</option>
-                                                                <option value="PEMDAS">Pemrograman Dasar</option>
-                                                                <option value="ORKOM">Organisasi & Arsitektur Komputer</option>
-                                                                <option value="JARKOM">Jaringan Komputer</option>
-                                                                <option value="PRC">Pemrograman Robot Cerdas</option>
-                                                                <option value="REKWEB">Rekayasa Web</option>
+                                                                <option value="Category 1">Pemrograman Dasar</option>
+                                                                <option value="Category 2">Organisasi & Arsitektur Komputer</option>
+                                                                <option value="Category 3">Jaringan Komputer</option>
+                                                                <option value="Category 4">Pemrograman Robot Cerdas</option>
+                                                                <option value="Category 5">Rekayasa Web</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -119,18 +119,18 @@ if (isset($_POST['submit'])) {
                                                     <div class="control-group">
                                                         <label class="control-label" for="basicinput">Kelas</label>
                                                         <div class="controls">
-                                                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="kelas" id="kls">
+                                                            <select tabindex="1" data-placeholder="Select here.." class="span8">
                                                                 <option value="">Select here..</option>
-                                                                <option value="A">A</option>
-                                                                <option value="B">B</option>
-                                                                <option value="C">C</option>
+                                                                <option value="Category 1">A</option>
+                                                                <option value="Category 2">B</option>
+                                                                <option value="Category 3">C</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="control-group">
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -150,14 +150,10 @@ if (isset($_POST['submit'])) {
                                                 <th>
                                                     Presentase Kehadiran (%)
                                                 </th>
-                                                <th>
-                                                    Aksi
-                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include './components/admin_tabel_absensi.php';
                                             ?>
                                         </tbody>
                                         <tfoot>
@@ -171,17 +167,10 @@ if (isset($_POST['submit'])) {
                                                 <th>
                                                     Presentase Kehadiran (%)
                                                 </th>
-                                                <th>
-                                                    Aksi
-                                                </th>
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    <div style="width: 100%; padding-top: 2%;" align="center">
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#AbsensiModal" style="width: 90%">
-                                            <i class='menu-icon icon-pencil'></i> Upload File Absensi
-                                        </button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <!--/.module-->
@@ -208,66 +197,3 @@ if (isset($_POST['submit'])) {
         <script src="scripts/common.js" type="text/javascript"></script>
 
     </body>
-
-    <!-- Modal -->
-    <div class="modal fade" id="AbsensiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Informasi Praktikum</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal row-fluid" method="post" action="admin/upload_absensi.php" enctype="multipart/form-data">
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Periode</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Select here.." class="span8" name="periode">
-                                    <option value="">Select here..</option>
-                                    <option value="1516">2015/2016</option>
-                                    <option value="1617">2016/2017</option>
-                                    <option value="1718">2017/2018</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Praktikum</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Select here.." class="span8" name="praktikum">
-                                    <option value="">Select here..</option>
-                                    <option value="PEMDAS">Pemrograman Dasar</option>
-                                    <option value="ORKOM">Organisasi & Arsitektur Komputer</option>
-                                    <option value="JARKOM">Jaringan Komputer</option>
-                                    <option value="PRC">Pemrograman Robot Cerdas</option>
-                                    <option value="REKWEB">Rekayasa Web</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">Kelas</label>
-                            <div class="controls">
-                                <select tabindex="1" data-placeholder="Select here.." class="span8" name="kelas">
-                                    <option value="">Select here..</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="basicinput">File</label>
-                            <div class="controls">
-                                <input type="file" name="fileToUpload" id="fileToUpload">
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>

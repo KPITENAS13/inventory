@@ -48,20 +48,12 @@ return(true);
 				
 					<ul class="nav pull-right">
 
-<<<<<<< HEAD
-						<li><a href="#">
-=======
                                                 <li><a href="register.php">
->>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 							Daftar
 						</a></li>
 
 						<li><a href="#">
-<<<<<<< HEAD
-							Lupa password?
-=======
 							Lupa kata sandi ?
->>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 						</a></li>
 					</ul>
 				</div><!-- /.nav-collapse -->
@@ -85,20 +77,12 @@ return(true);
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
-<<<<<<< HEAD
-									<input class="span12" type="text" name="id" placeholder="ID">
-=======
                                                                     <input class="span12" type="text" name="username" maxlength="9" placeholder="ID">
->>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-<<<<<<< HEAD
-									<input class="span12" type="password" name="password" placeholder="Kata Sandi">
-=======
                                                                     <input class="span12" type="password" name="password" maxlength="6" placeholder="Kata Sandi">
->>>>>>> 08eb833cc738a49fcd4c36efa2d9a8359d830ac7
 								</div>
 							</div>
 						</div>

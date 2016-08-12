@@ -5,7 +5,7 @@
         <ul class="nav nav-icons">
             <li><a href="#"><i class="icon-home"></i></a></li>
             <li><a href="#"><i class="icon-user"></i></a></li>
-            <li><a href="#"><i class="icon-bell"></i></a></li>
+            <li><a href="#"><i class="icon-bar-chart"></i></a></li>
         </ul>
         <ul class="nav pull-right">
             <li><a href="#"><?php echo "$_SESSION[username]";?> </a></li>
@@ -13,8 +13,9 @@
                     <img src="images/user.png" class="nav-avatar" />
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Pemberitahuan</a></li>
-                    <li><a href="#">Profil</a></li>
+                    <li><a href="#">Your Profile</a></li>
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">Account Settings</a></li>
                     <li class="divider"></li>
                     <li><a href="components/logout_proses.php">Logout</a></li>
                 </ul>

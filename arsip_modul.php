@@ -33,13 +33,11 @@ session_start();
                 <div class="row">
                     <div class="span3">
                         <?php
-                        if (empty($_SESSION['keterangan'])) {
+                        if (empty($_SESSION['username'])) {
                             include './components/sidebar1.php';
-                        } else if ($_SESSION['keterangan'] == "Admin") {
-                            include './components/sidebar4.php';
-                        } else if ($_SESSION['keterangan'] == "Dosen") {
+                        } else if ($_SESSION['username'] == "Admin") {
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['keterangan'] == "Mahasiswa"){
+                        } else {
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -70,7 +68,6 @@ session_start();
                                         </thead>
                                         <tbody>
                                             <?php
-                                            include './components/tabel_arsip_modul.php';
                                             ?>
                                         </tbody>
                                         <tfoot>
