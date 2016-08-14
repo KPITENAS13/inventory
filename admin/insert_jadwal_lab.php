@@ -1,5 +1,5 @@
 <?php
-$waktu = $_POST[awal] . "-" . $_POST[akhir] . " " . $_POST[hari];
+$waktu = $_POST[hari] . " " . $_POST[awal] . "-" . $_POST[akhir];
 include "../koneksi.php";
 mysql_query("INSERT INTO jadwal_lab
 (no_ruang,kegiatan,waktu,penanggungjawab)VALUES

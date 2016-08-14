@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (isset($_SESSION['username'])) {
     header('location:index.php');
 }
@@ -14,84 +15,34 @@ if (isset($_SESSION['username'])) {
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="css/theme.css" rel="stylesheet">
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-
-        <script src="bootstrap/js/jquery-1.8.3.min.js"></script>
-        <script src="bootstrap/js/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('[data-toggle="popover"]').popover({
-                    placement: 'right'
-                });
-            });
-        </script>        
-
-        <script type="text/javascript">
-            function ConfirmPassword() {
-                var pass = document.formreg.sandi.value;
-                var Cpass = document.formreg.konfirmasi.value;
-                var cek = document.getElementById('statusPassword');
-
-                if (Cpass !== pass) {
-                    cek.className = 'icon-remove';
-                } else {
-                    cek.className = 'icon-ok';
-                }
-
-                if (pass === "" || Cpass === "") {
-                    cek.className = '';
-                }
-            }
-        </script>
-
-        <script type="text/javascript">
-            function validasi(formreg) {
-                var nip = document.forms["formreg"]["id"].value;
-                var numbers = /^[0-9]+$/;
-
-                if (!nip.match(numbers)) {
-                    alert("ID harus berupa angka ...");
-                    formreg.id.focus();
-                    formreg.id.value = '';
-                    return(false);
-                }
-                return(true);
-            }
-        </script>
+        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+              rel='stylesheet'>
     </head>
     <body>
-
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                         <i class="icon-reorder shaded"></i>
                     </a>
-
                     <a class="brand" href="index.php">
                         Lab IF
                     </a>
-
                     <div class="nav-collapse collapse navbar-inverse-collapse">
-
                         <ul class="nav pull-right">
-
-                            <li><a href="#">
-                                    Daftar
-                                </a></li>
-
-                            <li><a href="#">
-                                    Lupa kata sandi?
-                                </a></li>
+                            <li>
+                                <a href="register.php">Daftar</a>
+                            </li>
+                            <li>
+                                <a href="#">Lupa kata sandi ?</a>
+                            </li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div>
-            </div><!-- /navbar-inner -->
-        </div><!-- /navbar -->
-
+            </div>
+            <!-- /navbar-inner -->
+        </div>
+        <!-- /navbar -->
         <div class="wrapper">
             <div class="container">
                 <div class="row">
@@ -163,14 +114,21 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
             </div>
-        </div><!--/.wrapper-->
-
+            <!--/.container-->
+        </div>
+        <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b> All rights reserved.
+                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
             </div>
         </div>
         <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+        <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="scripts/common.js" type="text/javascript"></script>
+
     </body>
+</html>

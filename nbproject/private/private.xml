@@ -3,22 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/inventory/absensi.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/info_jadwal_praktikum.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/arsip_sertifikat.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/arsip_absensi.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/arsip_surat.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/components/navbar2.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/admin_arsip.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/info_jadwal_lab.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/info_topik_TA.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/monitoring.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/arsip_jobsheet.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/arsip_modul.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/index.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/components/login_proses.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/info_daftar_nilai.php</file>
-            <file>file:/C:/xampp/htdocs/inventory/admin_info_topik_TA.php</file>
+            <file>file:/C:/xampp/htdocs/inventory/admin_info_jadwal_praktikum.php</file>
+            <file>file:/C:/xampp/htdocs/inventory/components/admin_tabel_jadwal_praktikum.php</file>
+            <file>file:/C:/xampp/htdocs/inventory/admin/update_jadwal_lab.php</file>
+            <file>file:/C:/xampp/htdocs/inventory/admin/insert_jadwal_praktikum.php</file>
         </group>
     </open-files>
 </project-private>

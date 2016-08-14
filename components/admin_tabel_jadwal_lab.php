@@ -8,7 +8,10 @@ while ($r = mysql_fetch_array($q)) {
             <td>$r[kegiatan]</td>
             <td>$r[waktu]</td>
             <td>$r[penanggungjawab]</td>
-            <td><a href='admin/delete_jadwal_lab.php?kode=$r[id]'> Hapus </a></td>
+            <td>
+            <a href='admin/delete_jadwal_lab.php?kode=$r[id]'><i class='menu-icon icon-trash'></i>Hapus</a> / 
+            <a href='admin_info_jadwal_lab.php?update=true&&id=$r[id]'><i class='menu-icon icon-edit'></i>Update</a>
+            </td>
         </tr>";
 }
 ?>
