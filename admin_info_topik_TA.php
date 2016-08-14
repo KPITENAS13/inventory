@@ -1,5 +1,13 @@
 <?php
-session_start();    
+session_start();
+
+if (isset($_GET[update])) {
+    $id = $_GET[id];
+    include './koneksi.php';
+    $query = "select * from topik_ta WHERE id=$id ";
+    $hasil = mysql_query($query);
+    $row = mysql_fetch_array($hasil);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +47,7 @@ session_start();
                             include './components/sidebar4.php';
                         } else if ($_SESSION['kategori'] == "dosen") { //jika dosen yang masuk
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['kategori'] == "mahasiswa"){ //jika mahasiswa yang masuk
+                        } else if ($_SESSION['kategori'] == "mahasiswa") { //jika mahasiswa yang masuk
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -114,7 +122,7 @@ session_start();
                                 </div>
                                 <div class="module-body table">
                                     <div style="width: 100%; padding-bottom: 2%;" align="center">
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#DisarankanModal" style="width: 90%">
+                                        <button class="btn btn-success" data-toggle="modal" data-target="#InsertDisarankanModal" style="width: 90%">
                                             <i class='menu-icon icon-pencil'></i> Tambah Topik TA (Disarankan)
                                         </button>
                                     </div>
@@ -176,28 +184,61 @@ session_start();
 </html>
 
 <!-- Modal -->
-<div class="modal fade" id="BerlangsungModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal hide fade" id="BerlangsungModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Informasi Topik Tugas Akhir</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="admin/insert_topik_ta_berlangsung.php" onsubmit="infoSimpan()">
-                    <table style="width: 80%; margin-left: 10%">
-                        <tr align="center">
-                            <td><input name="judul" type="text" placeholder="Judul" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="peserta" type="text" placeholder="Peserta" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="pembimbing1" type="text" placeholder="Pembimbing 1" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="pembimbing2" type="text" placeholder="Pembimbing 2" style="width: 80%;"></td>
-                        </tr>
-                    </table>
+                <form method="post" action="admin/insert_topik_ta_berlangsung.php" onsubmit="infoSimpan()" class="form-horizontal row-fluid">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Judul</label>
+                        <div class="controls">
+                            <input type="text" id="basicinput" class="span8" name="judul" value="<?php echo $row[judul] ?>">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Peserta</label>
+                        <div class="controls">
+                            <input type="text" id="basicinput" class="span8" name="peserta" value="<?php echo $row[peserta] ?>">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Pembimbing 1</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="pembimbing1">
+                                <option value="">Select here..</option>
+                                <option value="Asep Nana Hermana, S.T., M.T.">Asep Nana Hermana, S.T., M.T.</option>
+                                <option value="Budi Raharjo, M.T.">Budi Raharjo, M.T.</option>
+                                <option value="Dina Utami, S.T., M.T.">Dina Utami, S.T., M.T.</option>
+                                <option value="Irma Amelia, S.T., M.T.">Irma Amelia, S.T., M.T.</option>
+                                <option value="Jasman Pardede, S.T., M.T.">Jasman Pardede, S.T., M.T.</option>
+                                <option value="Milda Gustiana, H., M.Eng.">Milda Gustiana, H., M.Eng.</option>
+                                <option value="Rio Korio Utoro, S.T., M.T.">Rio Korio Utoro, S.T., M.T.</option>
+                                <option value="Youlia Indrawaty, S.T., M.T.">Youlia Indrawaty, S.T., M.T.</option>
+                                <option value="Yusuf Miftahudin, S.T., M.T.">Yusuf Miftahudin, S.T., M.T.</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Pembimbing 1</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="pembimbing2">
+                                <option value="">Select here..</option>
+                                <option value="Asep Nana Hermana, S.T., M.T.">Asep Nana Hermana, S.T., M.T.</option>
+                                <option value="Budi Raharjo, M.T.">Budi Raharjo, M.T.</option>
+                                <option value="Dina Utami, S.T., M.T.">Dina Utami, S.T., M.T.</option>
+                                <option value="Irma Amelia, S.T., M.T.">Irma Amelia, S.T., M.T.</option>
+                                <option value="Jasman Pardede, S.T., M.T.">Jasman Pardede, S.T., M.T.</option>
+                                <option value="Milda Gustiana, H., M.Eng.">Milda Gustiana, H., M.Eng.</option>
+                                <option value="Rio Korio Utoro, S.T., M.T.">Rio Korio Utoro, S.T., M.T.</option>
+                                <option value="Youlia Indrawaty, S.T., M.T.">Youlia Indrawaty, S.T., M.T.</option>
+                                <option value="Yusuf Miftahudin, S.T., M.T.">Yusuf Miftahudin, S.T., M.T.</option>
+                            </select>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -208,7 +249,72 @@ session_start();
     </div>
 </div>
 
-<div class="modal fade" id="DisarankanModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal hide fade" id="UpdateBerlangsungModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Informasi Topik Tugas Akhir</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="admin/update_topik_ta_berlangsung.php" onsubmit="infoInsert()" class="form-horizontal row-fluid">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Judul</label>
+                        <div class="controls">
+                            <input type="text" id="basicinput" class="span8" name="judul" value="<?php echo $row[judul] ?>">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Peserta</label>
+                        <div class="controls">
+                            <input type="text" id="basicinput" class="span8" name="peserta" value="<?php echo $row[peserta] ?>">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Pembimbing 1</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="pembimbing1">
+                                <option value="">Select here..</option>
+                                <option value="Asep Nana Hermana, S.T., M.T."<?php if ($row[pembimbing1] == 'Asep Nana Hermana, S.T., M.T.') echo ' selected="selected"'; ?>>Asep Nana Hermana, S.T., M.T.</option>
+                                <option value="Budi Raharjo, M.T."<?php if ($row[pembimbing1] == 'Budi Raharjo, M.T.') echo ' selected="selected"'; ?>>Budi Raharjo, M.T.</option>
+                                <option value="Dina Utami, S.T., M.T."<?php if ($row[pembimbing1] == 'Dina Utami, S.T., M.T.') echo ' selected="selected"'; ?>>Dina Utami, S.T., M.T.</option>
+                                <option value="Irma Amelia, S.T., M.T."<?php if ($row[pembimbing1] == 'Irma Amelia, S.T., M.T.') echo ' selected="selected"'; ?>>Irma Amelia, S.T., M.T.</option>
+                                <option value="Jasman Pardede, S.T., M.T."<?php if ($row[pembimbing1] == 'Jasman Pardede, S.T., M.T.') echo ' selected="selected"'; ?>>Jasman Pardede, S.T., M.T.</option>
+                                <option value="Milda Gustiana, H., M.Eng."<?php if ($row[pembimbing1] == 'Milda Gustiana, H., M.Eng.') echo ' selected="selected"'; ?>>Milda Gustiana, H., M.Eng.</option>
+                                <option value="Rio Korio Utoro, S.T., M.T."<?php if ($row[pembimbing1] == 'Rio Korio Utoro, S.T., M.T.') echo ' selected="selected"'; ?>>Rio Korio Utoro, S.T., M.T.</option>
+                                <option value="Youlia Indrawaty, S.T., M.T."<?php if ($row[pembimbing1] == 'Youlia Indrawaty, S.T., M.T.') echo ' selected="selected"'; ?>>Youlia Indrawaty, S.T., M.T.</option>
+                                <option value="Yusuf Miftahudin, S.T., M.T."<?php if ($row[pembimbing1] == 'Yusuf Miftahudin, S.T., M.T.') echo ' selected="selected"'; ?>>Yusuf Miftahudin, S.T., M.T.</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Pembimbing 2</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="pembimbing2">
+                                <option value="">Select here..</option>
+                                <option value="Asep Nana Hermana, S.T., M.T."<?php if ($row[pembimbing2] == 'Asep Nana Hermana, S.T., M.T.') echo ' selected="selected"'; ?>>Asep Nana Hermana, S.T., M.T.</option>
+                                <option value="Budi Raharjo, M.T."<?php if ($row[pembimbing2] == 'Budi Raharjo, M.T.') echo ' selected="selected"'; ?>>Budi Raharjo, M.T.</option>
+                                <option value="Dina Utami, S.T., M.T."<?php if ($row[pembimbing2] == 'Dina Utami, S.T., M.T.') echo ' selected="selected"'; ?>>Dina Utami, S.T., M.T.</option>
+                                <option value="Irma Amelia, S.T., M.T."<?php if ($row[pembimbing2] == 'Irma Amelia, S.T., M.T.') echo ' selected="selected"'; ?>>Irma Amelia, S.T., M.T.</option>
+                                <option value="Jasman Pardede, S.T., M.T."<?php if ($row[pembimbing2] == 'Jasman Pardede, S.T., M.T.') echo ' selected="selected"'; ?>>Jasman Pardede, S.T., M.T.</option>
+                                <option value="Milda Gustiana, H., M.Eng."<?php if ($row[pembimbing2] == 'Milda Gustiana, H., M.Eng.') echo ' selected="selected"'; ?>>Milda Gustiana, H., M.Eng.</option>
+                                <option value="Rio Korio Utoro, S.T., M.T."<?php if ($row[pembimbing2] == 'Rio Korio Utoro, S.T., M.T.') echo ' selected="selected"'; ?>>Rio Korio Utoro, S.T., M.T.</option>
+                                <option value="Youlia Indrawaty, S.T., M.T."<?php if ($row[pembimbing2] == 'Youlia Indrawaty, S.T., M.T.') echo ' selected="selected"'; ?>>Youlia Indrawaty, S.T., M.T.</option>
+                                <option value="Yusuf Miftahudin, S.T., M.T."<?php if ($row[pembimbing2] == 'Yusuf Miftahudin, S.T., M.T.') echo ' selected="selected"'; ?>>Yusuf Miftahudin, S.T., M.T.</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal hide fade" id="InsertDisarankanModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -216,9 +322,9 @@ session_start();
             </div>
             <div class="modal-body">
                 <form method="post" action="admin/insert_topik_ta_disarankan.php" onsubmit="infoSimpan()">
-                    <table style="width: 80%; margin-left: 10%">
+                    <table style="width: 90%; margin-left: 4%">
                         <tr align="center">
-                            <td><input name="judul" type="text" placeholder="Judul Tugas Akhir" style="width: 80%;"></td>
+                            <td><input name="judul" type="text" placeholder="Judul Tugas Akhir" style="width: 100%;"></td>
                         </tr>
                     </table>
             </div>
@@ -231,17 +337,18 @@ session_start();
     </div>
 </div>
 
-<div class="modal fade" id="PesertaModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal hide fade" id="UpdateDisarankanModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Informasi Peserta Tugas Akhir</h4>
+                <h4 class="modal-title" id="myModalLabel">Update Informasi Topik Tugas Akhir</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="admin/update_topik_ta_peserta_disarankan.php" onsubmit="infoSimpan()">
-                    <table style="width: 80%; margin-left: 10%">
+                <form method="post" action="admin/update_topik_ta_disarankan.php" onsubmit="infoSimpan()">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <table style="width: 90%; margin-left: 4%">
                         <tr align="center">
-                            <td><input name="peserta" type="text" placeholder="Nama Peserta Topik Tugas Akhir" style="width: 80%;"></td>
+                            <td><input name="judul" type="text" placeholder="Judul Tugas Akhir" style="width: 100%;" value="<?php echo $row[judul] ?>"></td>
                         </tr>
                     </table>
             </div>
@@ -253,3 +360,41 @@ session_start();
         </div>
     </div>
 </div>
+
+<div class="modal hide fade" id="PesertaModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Informasi Peserta Tugas Akhir</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="admin/update_topik_ta_peserta_disarankan.php" onsubmit="infoSimpan()">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <table style="width: 90%; margin-left: 4%">
+                        <tr align="center">
+                            <td><input name="peserta" type="text" value="<?php echo $row[judul]; ?>" style="width: 100%;" readonly></td>
+                        </tr>
+                        <tr align="center">
+                            <td><input name="peserta" type="text" placeholder="Nama Peserta Topik Tugas Akhir" style="width: 100%;"></td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var update = '<?php echo $_GET[update]; ?>';
+    if (update == "disarankan") {
+        $('#UpdateDisarankanModal').modal('show');
+    } else if (update == "peserta") {
+        $('#PesertaModal').modal('show');
+    } else if (update == "berlangsung") {
+        $('#UpdateBerlangsungModal').modal('show');
+    }
+</script>
