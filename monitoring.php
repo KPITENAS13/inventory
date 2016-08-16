@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,7 +39,7 @@
                             include './components/sidebar4.php';
                         } else if ($_SESSION['kategori'] == "dosen") { //jika dosen yang masuk
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['kategori'] == "mahasiswa"){ //jika mahasiswa yang masuk
+                        } else if ($_SESSION['kategori'] == "mahasiswa") { //jika mahasiswa yang masuk
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -62,7 +65,7 @@
                                             </p>
                                         </div>
                                         <div style="padding-top: 3vh; width: 59%; float: right; height: 5vh; margin-top: 2vh; margin-left: 1%;">
-                                            <button class="btn btn-success btn-large" data-toggle="modal" data-target="#myModal" style="width: 40%">
+                                            <button class="btn btn-success btn-large" data-toggle="modal" data-target="#myModal" style="width: 40%" data-backdrop="static" data-keyboard="false">
                                                 <i class='menu-icon icon-play'></i> Mulai Streaming
                                             </button>
                                         </div>
@@ -130,7 +133,7 @@
 
     </body>
     <!-- Modal Cam 1 -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -138,10 +141,7 @@
                     <h4 class="modal-title" id="myModalLabel">Camera 01</h4>
                 </div>
                 <div class="modal-body">
-                    <video width="100%" height="100%" controls>
-                        <source src="vid/movie1.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <img src="http://10.224.125.35:8080/video">
                 </div>
                 <div class="modal-footer">
                     <p>Laboratorium Pemrograman Dasar</p>
@@ -150,7 +150,7 @@
         </div>
     </div>
     <!-- Modal Cam 2-->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal hide fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -158,10 +158,7 @@
                     <h4 class="modal-title" id="myModalLabel">Camera 02</h4>
                 </div>
                 <div class="modal-body">
-                    <video width="100%" height="100%" controls>
-                        <source src="vid/movie1.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <img src="http://10.82.92.233:8080/video">
                 </div>
                 <div class="modal-footer">
                     <p>Laboratorium Pemrograman Dasar</p>
@@ -170,7 +167,7 @@
         </div>
     </div>
     <!-- Modal Cam 3-->
-    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal hide fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

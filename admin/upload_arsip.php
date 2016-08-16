@@ -23,7 +23,7 @@ if ($uploadOk == 0) {
         mysql_query("INSERT INTO file 
         (nama_file,tanggal_upload,kategori,path)VALUES 
         ('$nama_file','$tanggal','$kategori','$target_file')");
-        header('location:../admin_arsip.php');
+        header("location:../admin_arsip.php?kategori=$kategori");
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

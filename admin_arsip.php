@@ -39,7 +39,7 @@ session_start();
                             include './components/sidebar4.php';
                         } else if ($_SESSION['kategori'] == "dosen") { //jika dosen yang masuk
                             include './components/sidebar2.php';
-                        } else if ($_SESSION['kategori'] == "mahasiswa"){ //jika mahasiswa yang masuk
+                        } else if ($_SESSION['kategori'] == "mahasiswa") { //jika mahasiswa yang masuk
                             include './components/sidebar3.php';
                         }
                         ?>
@@ -53,7 +53,7 @@ session_start();
                                     <h3>Arsip Dokumen Laboratorium</h3>
                                 </div>
                                 <div class="module-body table">
-                                    
+
                                     <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
                                            width="100%">
                                         <thead>
@@ -65,15 +65,13 @@ session_start();
                                                     Tanggal Upload
                                                 </th>
                                                 <th>
-                                                    Kategori
-                                                </th>
-                                                <th>
-                                                    Download
+                                                    Aksi
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
+                                            include './components/admin_tabel_arsip.php';
                                             ?>
                                         </tbody>
                                         <tfoot>
@@ -85,16 +83,28 @@ session_start();
                                                     Tanggal Upload
                                                 </th>
                                                 <th>
-                                                    Kategori
-                                                </th>
-                                                <th>
-                                                    Download
+                                                    Aksi
                                                 </th>
                                             </tr>
                                         </tfoot>
                                     </table>
                                     <div style="width: 100%; padding-top: 2%;" align="center">
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#UploadModal" style="width: 90%">
+                                        <button class="btn btn-success" data-toggle="modal"  style="width: 90%" 
+                                                data-target="
+                                                <?php 
+                                                if($_GET[kategori]=="Modul"){
+                                                    echo "#UploadModul";
+                                                }else if($_GET[kategori]=="Jobsheet"){
+                                                    echo "#UploadJobsheet";
+                                                }else if($_GET[kategori]=="Absensi"){
+                                                    echo "#UploadAbsensi";
+                                                }else if($_GET[kategori]=="Sertifikat"){
+                                                    echo "#UploadSertifikat";
+                                                }else if($_GET[kategori]=="SuratKeluar"){
+                                                    echo "#UploadSurat";
+                                                }
+                                                ?>
+                                                ">
                                             <i class='menu-icon icon-pencil'></i> Tambah File Dokumentasi
                                         </button>
                                     </div>
@@ -127,38 +137,98 @@ session_start();
 </html>
 
 <!-- Modal -->
-<div class="modal fade" id="UploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal hide fade" id="UploadModul" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Informasi Praktikum</h4>
+                <h4 class="modal-title" id="myModalLabel">Informasi Modul Praktikum</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="admin/upload.php" enctype="multipart/form-data">
-                    <table style="width: 80%; margin-left: 10%">
-                        <tr align="center">
-                            <td><input class="form-inline" name="file" type="file" placeholder="File" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="semester" type="text" placeholder="Semester" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="nama_prak" type="text" placeholder="Nama Praktikum" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="kelas" type="text" placeholder="Kelas" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="waktu" type="text" placeholder="Waktu" style="width: 80%;"></td>
-                        </tr>
-                        <tr align="center">
-                            <td><input name="asisten" type="text" placeholder="Koordinator" style="width: 80%;"></td>
-                        </tr>
-                    </table>
+                <form method="post" action="admin/upload_arsip.php" onsubmit="infoInsert()" class="form-horizontal row-fluid" enctype="multipart/form-data">
+                    <input type="hidden" name="kategori" value="<?php echo $_GET[kategori]; ?>">
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Periode</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="periode">
+                                <option value="">Select here..</option>
+                                <option value="1516">2015/2016</option>
+                                <option value="1617">2016/2017</option>
+                                <option value="1718">2017/2018</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Praktikum</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="praktikum">
+                                <option value="">Select here..</option>
+                                <option value="PEMDAS">Pemrograman Dasar</option>
+                                <option value="ORKOM">Organisasi & Arsitektur Komputer</option>
+                                <option value="JARKOM">Jaringan Komputer</option>
+                                <option value="PRC">Pemrograman Robot Cerdas</option>
+                                <option value="REKWEB">Rekayasa Web</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Koordinator</label>
+                        <div class="controls">
+                            <input type="file" id="fileToUpload" class="span8" name="fileToUpload">
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal hide fade" id="UploadJobsheet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Informasi Jobsheet Praktikum</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="admin/upload_arsip.php" onsubmit="infoInsert()" class="form-horizontal row-fluid" enctype="multipart/form-data">
+                    <input type="hidden" name="kategori" value="<?php echo $_GET[kategori]; ?>">
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Periode</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="periode">
+                                <option value="">Select here..</option>
+                                <option value="1516">2015/2016</option>
+                                <option value="1617">2016/2017</option>
+                                <option value="1718">2017/2018</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Praktikum</label>
+                        <div class="controls">
+                            <select tabindex="1" data-placeholder="Select here.." class="span8" name="praktikum">
+                                <option value="">Select here..</option>
+                                <option value="PEMDAS">Pemrograman Dasar</option>
+                                <option value="ORKOM">Organisasi & Arsitektur Komputer</option>
+                                <option value="JARKOM">Jaringan Komputer</option>
+                                <option value="PRC">Pemrograman Robot Cerdas</option>
+                                <option value="REKWEB">Rekayasa Web</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="basicinput">Koordinator</label>
+                        <div class="controls">
+                            <input type="file" id="fileToUpload" class="span8" name="fileToUpload">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
                 </form>
             </div>
         </div>

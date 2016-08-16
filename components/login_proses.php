@@ -12,6 +12,7 @@ if ($digit == 4) { //cek digit untuk dosen
     if ($row['nid'] == $username AND $row['sandi'] == $password) {
         session_start();
         $_SESSION['username'] = $row['nama'];
+        $_SESSION['kode'] = $row['nid'];
         $_SESSION['kategori'] = "dosen";
         header("location:../index.php");
     } else {
@@ -21,12 +22,21 @@ if ($digit == 4) { //cek digit untuk dosen
     }
 } else if ($digit == 9) { //cek digit mahasiswa
     $query = "select * from mahasiswa WHERE id = '$username' AND pin = '$password'";
+    $query2 = "select * from praktikan WHERE nrp = '$username'";
+    $hasil2 = mysql_query($query2);
     $hasil = mysql_query($query);
     $row = mysql_fetch_array($hasil);
+    $row2 = mysql_fetch_array($hasil2);
     if ($row['id'] == $username AND $row['pin'] == $password) {
         session_start();
         $_SESSION['username'] = $row['nama'];
+        $_SESSION['kode'] = $row['id'];
         $_SESSION['kategori'] = "mahasiswa";
+        if(!empty($row2)) {
+            $_SESSION['praktikan'] = "true";
+        }else{
+            $_SESSION['praktikan'] = "false";
+        }
         header("location:../index.php");
     } else {
         echo "<script>window.history.back(-1);"
@@ -39,5 +49,4 @@ if ($digit == 4) { //cek digit untuk dosen
     $_SESSION['kategori'] = "admin";
     header("location:../index.php");
 }
-
 ?>

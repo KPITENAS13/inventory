@@ -1,8 +1,14 @@
 <!--Sidebar menu untuk mahasiswa-->
 <div class="sidebar">
-    <!--/.widget-nav-->
     <ul class="widget widget-menu unstyled">
-        <li><a href="#"><i class="menu-icon icon-qrcode"></i> Peminjaman </a></li>
+        <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-shopping-cart">
+                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                </i> Peminjaman </a>
+            <ul id="togglePages" class="collapse unstyled">
+                <li><a href="admin_arsip_absensi.php"><i class="icon-book"></i> Penelitian </a></li>
+                <li><a href="User_PeminjamanPraktikum.php"><i class="icon-lightbulb"></i> Praktikum </a></li>
+            </ul>
+        </li>
     </ul>
     <!--/.widget-nav-->
     <ul class="widget widget-menu unstyled">
